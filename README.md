@@ -15,3 +15,6 @@ redis key 设计 是冗余设计
 ### 以username 查找
 *   set user:username:zhansan:userid:1
 *   set user:username:lisi:userid:2
+
+### 记录用户自增id
+*   incr global:userid
