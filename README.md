@@ -18,3 +18,28 @@ redis key 设计 是冗余设计
 
 ### 记录用户自增id
 *   incr global:userid
+
+## 记录最新注册用户
+
+### 注册时用list 存入
+*   lpush newuserlink userid
+*   ltrim newuserlink 0 49
+#### php使用方法
+~~~
+写入时
+$r->lPush('newuserlink', $userid);
+$r->lTrim('newuserlink', 0, 49);
+读取时
+$newuserlist = $r->sort('newuserlink', ['sort' => 'desc', 'get' => 'user:userid:*:username']);
+~~~
+
+## 关注用户
+
+### key 设计
+
+使用set
+* 
+### php 使用
+~~~
+
+~~~
